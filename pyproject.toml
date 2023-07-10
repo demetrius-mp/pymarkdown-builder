@@ -49,6 +49,11 @@ toml-sort = "^0.23.1"
 pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
 
+[tool.poetry.urls]
+Documentation = "https://pymarkdown-builder.readthedocs.io/en/latest/"
+"Source Code" = "https://github.com/demetrius-mp/pymarkdown-builder"
+"Issue Tracker" = "https://github.com/demetrius-mp/pymarkdown-builder/issues"
+
 [tool.pytest.ini_options]
 pythonpath = "."
 addopts = "--doctest-modules --cov=pymarkdown_builder --cov-report=xml"
