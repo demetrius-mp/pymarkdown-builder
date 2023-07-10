@@ -38,6 +38,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Contribute: contribute.md
+  - Usage: usage.md
   - API: api/
 
 plugins:

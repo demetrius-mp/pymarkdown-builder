@@ -26,6 +26,8 @@ pip install pymarkdown-builder
 
 ## Usage
 
+> For more examples, see the [documentation](https://pymarkdown-builder.readthedocs.io/en/latest/usage).
+
 ```python
 from pymarkdown_builder import MarkdownBuilder
 from pymarkdown_builder import Tokens as t
@@ -37,6 +39,7 @@ builder = (
         t.h1("pymarkdown-builder"),
         t.quote("A Markdown document builder with line and span writing modes."),
     )
+    .br()
     .spans(
         t.p("A paragraph with an "),
         t.link("https://google.com", "inline link"),
@@ -45,7 +48,7 @@ builder = (
     )
 )
 
-assert builder.document == "# pymarkdown-builder\n\n> A Markdown document builder with line and span writing modes.A paragraph with an [inline link](https://google.com) and a **bold *and italic***"
+assert builder.document == "# pymarkdown-builder\n\n> A Markdown document builder with line and span writing modes.\n\nA paragraph with an [inline link](https://google.com) and a **bold *and italic***"
 ```
 
 ## License
