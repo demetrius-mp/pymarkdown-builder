@@ -20,7 +20,7 @@ jobs:
         run: poetry install --without docs,local
       
       - name: Lints and formats the package
-        run: poetry run poe format
+        run: poetry run poe lint-fmt
 
       - name: Run tests
         run: poetry run poe test
