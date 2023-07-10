@@ -1,0 +1,19 @@
+fail_fast: true
+default_install_hook_types: [pre-commit, pre-push]
+repos:
+  - repo: local
+    hooks:
+      - id: lint-fmt
+        name: Lints and formats the package with ruff, black and toml-sort.
+        entry: poetry run poe lint-fmt
+        language: system
+        types: [python]
+        pass_filenames: false
+        stages: [push]
+      - id: test
+        name: Runs the test suite.
+        entry: poetry run poe test
+        language: system
+        types: [python]
+        pass_filenames: false
+        stages: [push]
