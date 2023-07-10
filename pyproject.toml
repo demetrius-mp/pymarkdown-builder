@@ -1,0 +1,66 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+# lint and format
+ruff = {cmd = "ruff src/ tests/", help = "Lints the project, fixing errors."}
+black = {cmd = "black src/ tests/", help = "Formats the code."}
+toml-sort = {cmd = "toml-sort pyproject.toml", help = "Sorts pyproject.toml file."}
+lint-fmt = {sequence = ["toml-sort", "ruff", "black"], help = "Lints and formats the package with ruff, black and toml-sort."}
+# tests
+test = {cmd = "pytest -s -x -vvv src/pymarkdown_builder/ tests/", help = "Run tests against the package."}
+cov = {cmd = "coverage html", help = "Generate coverage report."}
+test-cov = {sequence = ["test", "cov"], help = "Run tests and generate coverage report."}
+
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = "--doctest-modules --cov=pymarkdown_builder --cov-report=xml"
+
+[tool.poetry]
+name = "pymarkdown-builder"
+version = "0.1.0"
+description = "A Markdown document builder with line and span writing modes."
+authors = ["Demetrius Panovitch <demetrius.mp789@gmail.com>"]
+readme = "README.md"
+packages = [{include = "pymarkdown_builder", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typing-extensions = "^4.7.1"
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.21.0"
+
+[tool.poetry.group.lint-fmt.dependencies]
+ruff = "^0.0.277"
+black = "^23.3.0"
+toml-sort = "^0.23.1"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+
+[tool.ruff]
+extend-select = [
+  # isort
+  "I001",
+  # https://www.pydocstyle.org/en/stable/error_codes.html
+  "D",
+  "C4"
+]
+unfixable = ["F841"]
+ignore-init-module-imports = true
+fix = true
+
+[tool.ruff.isort]
+lines-after-imports = 2
+
+[tool.ruff.per-file-ignores]
+"tests/*" = ["D", "E501", "F811", "F401"]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.tomlsort]
+in_place = true
