@@ -1,0 +1,54 @@
+site_name: PyMarkdownBuilder
+site_description: A Markdown document builder with line and span writing modes.
+site_author: Demetrius M. Panovitch
+repo_url: https://github.com/demetrius-mp/pymarkdown-builder
+repo_name: demetrius-mp/pymarkdown-builder
+edit_uri: tree/main/docs
+copyright: Copyright &copy; 2023 Maintained by <a href="https://github.com/demetrius-mp">Demetrius</a>.
+
+watch:
+  - src
+  - docs
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - navigation.top
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - md_in_html
+
+nav:
+  - Home: index.md
+  - Contribute: contribute.md
+  - API: api/
+
+plugins:
+  - search
+  - gen-files:
+      scripts:
+        - scripts/docs-generate-api-pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]

@@ -3,7 +3,7 @@
 A partial token is a callable that wraps text with a given string.
 It can also be used with pipe operators to allow composition with other tokens.
 
-To create your own partial tokens, use the [`create_partial_token`][pymarkdown_builder.create_partial_token] function.
+To create your own partial tokens, use the [`create_partial_token`][pymarkdown_builder.partial_tokens.create_partial_token] function.
 """  # noqa: E501
 
 
@@ -62,9 +62,9 @@ class PartialToken:
     """
 
     open_tag: str
-    """The string that will be prepended to the text."""
+    """String that will be prepended to the text."""
     close_tag: str
-    """The string that will be appended to the text."""
+    """String that will be appended to the text."""
 
     def __init__(
         self,
@@ -75,7 +75,7 @@ class PartialToken:
 
         Args:
             open_tag (str): The string that will be prepended to the text.
-            close_tag (Optional[str]): The string that will be appended to the text. If `None`, will use the `open_tag` value.
+            close_tag (Optional[str]): The string that will be appended to the text. If not provided, will use the `open_tag` value.
         """  # noqa: E501
         close_tag = close_tag or open_tag
 
@@ -120,6 +120,6 @@ def create_partial_token(
 
     Args:
         open_tag (str): The string that will be prepended to the text.
-        close_tag (Optional[str]): The string that will be appended to the text. If `None`, will use the `open_tag` value.
+        close_tag (Optional[str]): The string that will be appended to the text. If not provided, will use the `open_tag` value.
     """  # noqa: E501
     return PartialToken(open_tag, close_tag)

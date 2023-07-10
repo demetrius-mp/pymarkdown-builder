@@ -190,7 +190,7 @@ class Tokens:
         r"""Creates an unordered list by prepending each item with `- `.
 
         Args:
-            items (Iterable[str]): Items to be listed.
+            *items (Iterable[str]): Unpacked iterable of items to be listed.
 
         Examples:
             >>> Tokens.unordered_list("Hello", "World")
@@ -205,7 +205,7 @@ class Tokens:
         r"""Creates an ordered list by prepending each item with `1. `.
 
         Args:
-            items (Iterable[str]): Items to be listed.
+            *items (Iterable[str]): Unpacked iterable of items to be listed.
 
         Examples:
             >>> Tokens.ordered_list("Hello", "World")
@@ -217,7 +217,7 @@ class Tokens:
     def table(
         *rows: Iterable[str],
     ) -> str:
-        r"""Creates a table from an iterable of rows with `|` syntax. Will separate the header and the body using `---`.
+        r"""Creates a table from an iterable of rows. Will separate cells using `|`, and separate the header and the body using `---`.
 
         Args:
             *rows (Iterable[str]): Unpacked iterable of rows. The first row is the header, and the rest are the body.
@@ -250,11 +250,11 @@ class Tokens:
         *dicts: Dict[str, str],
         header: Iterable[str] | None = None,
     ) -> str:
-        r"""Creates a table from an iterable of dicts with `|` syntax. Will separate the header and the body using `---`.
+        r"""Creates a table from an iterable of rows. Will separate cells using `|`, and separate the header and the body using `---`.
 
         Args:
             *dicts (Dict[str, str]): Unpacked iterable of dicts. Each dict will be a row.
-            header (Iterable[str] | None): Custom table header. If `None`, the keys of the first dict will be used.
+            header (Iterable[str] | None): Custom table header. If not provided, will use the keys of the first dict.
 
         Examples:
             >>> Tokens.table_from_dicts({"name": "John", "age": "20"}, {"name": "Jane", "age": "19"})
