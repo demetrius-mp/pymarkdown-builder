@@ -23,7 +23,7 @@ jobs:
         run: poetry run poe lint-fmt
 
       - name: Run tests
-        run: poetry run poe test
+        run: poetry run poe test-cov
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
