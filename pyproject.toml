@@ -9,7 +9,7 @@ black = {cmd = "black src/ tests/", help = "Formats the code."}
 toml-sort = {cmd = "toml-sort pyproject.toml", help = "Sorts pyproject.toml file."}
 lint-fmt = {sequence = ["toml-sort", "ruff", "black"], help = "Lints and formats the package with ruff, black and toml-sort."}
 # tests
-test = {cmd = "pytest -s -x -vvv src/pymarkdown_builder/ tests/", help = "Run tests against the package."}
+test = {cmd = "pytest src/pymarkdown_builder/ tests/ docs/ README.md", help = "Run tests against the package."}
 cov = {cmd = "coverage html", help = "Generate coverage report."}
 test-cov = {sequence = ["test", "cov"], help = "Run tests and generate coverage report."}
 # docs
@@ -51,6 +51,7 @@ pre-commit = "^3.3.3"
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
+pytest-markdown-docs = "^0.4.3"
 
 [tool.poetry.urls]
 Documentation = "https://pymarkdown-builder.readthedocs.io/en/latest/"
@@ -59,7 +60,7 @@ Documentation = "https://pymarkdown-builder.readthedocs.io/en/latest/"
 
 [tool.pytest.ini_options]
 pythonpath = "."
-addopts = "--doctest-modules --cov=pymarkdown_builder --cov-report=xml"
+addopts = "--doctest-modules -s -x -vvv --markdown-docs --cov=pymarkdown_builder --cov-report=xml"
 
 [tool.ruff]
 extend-select = [

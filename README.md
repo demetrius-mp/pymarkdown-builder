@@ -19,6 +19,30 @@ You can install with `pip`, `poetry`, or any other package manager:
 pip install pymarkdown-builder
 ```
 
+## Usage
+
+```python
+from pymarkdown_builder import MarkdownBuilder
+from pymarkdown_builder import Tokens as t
+
+
+builder = (
+    MarkdownBuilder()
+    .lines(
+        t.h1("pymarkdown-builder"),
+        t.quote("A Markdown document builder with line and span writing modes."),
+    )
+    .spans(
+        t.p("A paragraph with an "),
+        t.link("https://google.com", "inline link"),
+        t.p(" and a "),
+        t.bold | "bold " | t.italic | "and italic" | t.italic | t.bold,
+    )
+)
+
+assert builder.document == "# pymarkdown-builder\n\n> A Markdown document builder with line and span writing modes.A paragraph with an [inline link](https://google.com) and a **bold *and italic***"
+```
+
 ## License
 
 This project is licensed under the terms of the [GPL-3.0-only license](https://spdx.org/licenses/GPL-3.0-only.html).
