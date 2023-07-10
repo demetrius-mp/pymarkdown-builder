@@ -45,13 +45,12 @@ ruff = "^0.0.277"
 black = "^23.3.0"
 toml-sort = "^0.23.1"
 
+[tool.poetry.group.local.dependencies]
+pre-commit = "^3.3.3"
+
 [tool.poetry.group.test.dependencies]
 pytest = "^7.4.0"
 pytest-cov = "^4.1.0"
-
-
-[tool.poetry.group.local.dependencies]
-pre-commit = "^3.3.3"
 
 [tool.poetry.urls]
 Documentation = "https://pymarkdown-builder.readthedocs.io/en/latest/"
