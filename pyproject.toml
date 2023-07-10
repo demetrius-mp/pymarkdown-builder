@@ -20,6 +20,7 @@ name = "pymarkdown-builder"
 version = "0.1.0"
 description = "A Markdown document builder with line and span writing modes."
 authors = ["Demetrius Panovitch <demetrius.mp789@gmail.com>"]
+license = "GPL-3.0-only"
 readme = "README.md"
 packages = [{include = "pymarkdown_builder", from = "src"}]
 
